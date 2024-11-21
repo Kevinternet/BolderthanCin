@@ -1,0 +1,49 @@
+text/css body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+}
+
+header {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+input,
+button {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1em;
+}
+
+Now,
+some JavaScript for functionality: javascript document.addEventListener("DOMContentLoaded", function() {
+        let neopoints=0;
+        const taskList=document.getElementById("taskList");
+        const newTaskInput=document.getElementById("newTask");
+        const addTaskButton=document.getElementById("addTask");
+        const neopointsDisplay=document.getElementById("neopoints");
+
+        addTaskButton.addEventListener("click", function() {
+                const taskText=newTaskInput.value;
+
+                if (taskText.trim() !=="") {
+                    const newTaskItem=document.createElement("li");
+                    newTaskItem.textContent=taskText;
+                    taskList.appendChild(newTaskItem);
+
+                    newTaskItem.addEventListener("click", function() {
+                            taskList.removeChild(newTaskItem);
+                            neopoints +=10;
+                            neopointsDisplay.textContent=neopoints;
+                        });
+
+                    newTaskInput.value="";
+                }
+            });
+    });
